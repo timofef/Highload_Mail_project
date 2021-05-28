@@ -105,27 +105,31 @@
 
 1. user_session
 
-|   id   | user_id | expiration_date |
-|--------|---------|-----------------|
-| bigint |  bigint |     bigint      |
+    По данным из [источника](https://lucasmagnum.medium.com/redistip-estimate-the-memory-usage-for-repeated-keys-in-redis-2dc3f163fdab), одна сессия в redis будет занимать:  ```220 байт```
 
 2. user
 
-|id|address|password_hash|name|birthday|sex|telephone|
-|--|-------|-------------|----|--------|---|---------|
-|  |       |             |    |        |   |         |
+    |   id   |     address      |      password_hash     |     name      |  birthday  |   sex   |      telephone      |
+    |--------|------------------|------------------------|---------------|------------|---------|---------------------|
+    | bigint |    varchar(60)   |      varchar(32)       |  varchar(30)  |    date    |   bool  |     varchar(11)     |
+    
+    Максимальный вес одного пользователя: ```146 байт```
 
 3. letter
 
-|id|author|receiver|date|theme|answer_to|body|is_read|has_attaches|
-|--|------|--------|----|-----|---------|----|-------|------------|
-|  |      |        |    |     |         |    |       |            |
+    |   id   |   author   |     receiver     |    date     |      theme      |   answer_to   |        body        |  is_read  |  has_attaches  |
+    |--------|------------|------------------|-------------|-----------------|---------------|--------------------|-----------|----------------|
+    | bigint |   bigint   |    bigint[10]    |  timestamp  |  varchar(100)   |    bigint     |  varchar(1000000)  |    bool   |      bool      |
+    
+    На одно письмо: ```1000214 байт```
 
 4. attach
 
-|id|letter_id|name|size|path|
-|--|---------|----|----|----|
-|  |         |    |    |    |
+    |   id   |    letter_id   |      name     |  size  |       path      |
+    |--------|----------------|---------------|--------|-----------------|
+    | bigint |     bigint     |   varchar(30) |   int  |   varchar(50)   |
+    
+    Максимальный размер одного вложения в таблице attach: ```100 байт```
 
 ## Выбор технологий
 
