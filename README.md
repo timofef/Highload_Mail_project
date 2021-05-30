@@ -228,7 +228,7 @@ Sessions Redis
 
 |Процессор|RAM  |Storage   |
 |---------|-----|----------|
-|4 cores  |32 GB|128 GB SSD|
+|4 cores  |8 GB |128 GB SSD|
 
 Количество: 1 + 2 реплики
 
@@ -245,9 +245,11 @@ Backend
 
 Users Redis
 
-|Процессор|RAM  |Storage|Кол-во       |
-|---------|-----|-------|-------------|
-|8 cores  |16 GB|512 GB |1 + 2 реплики|
+Аналогично базе для хранений активных сессий, для обеспечения достаточной производительности нам хватит 4 ядра, но потребуется больше оператичной памяти.
+
+|Процессор|RAM  |Storage   |
+|---------|-----|----------|
+|4 cores  |16 GB|128 GB SSD|
 
 Количество: 1 + 2 реплики.
 
@@ -331,8 +333,8 @@ Attach Postgres
 
 |База данных          |CPU cores |RAM  |Storage       |Кол-во         |
 |---------------------|----------|-----|--------------|---------------|
-|Sessions Redis       |4 cores   |32 GB|128 GB SSD    |1 + 2 реплики  |
-|Users Redis          |
+|Sessions Redis       |4 cores   |8 GB |128 GB SSD    |1 + 2 реплики  |
+|Users Redis          |4 cores   |16 GB|128 GB SSD    |1 + 2 реплики  |
 |Letters Postgres Cold|8 cores   |32 GB|8 TB HDD x20  |25 + 50 реплик |
 |Letters Postgres Hot |8 cores   |32 GB|2 TB SSD x20  |2 + 4 реплики  |
 |Attach Postgres      |8 cores   |32 GB|2 TB SSD x4   |1 + 2 реплики  |
