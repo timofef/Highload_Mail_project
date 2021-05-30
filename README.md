@@ -279,7 +279,7 @@ Letters Postgres
 
 |Процессор|RAM  |Storage     |
 |---------|-----|------------|
-|8 cores  |32 GB|2 TB SSD x20|
+|16 cores |32 GB|2 TB SSD x20|
 
 Будем брать с запасом в 3 раза. Если на горячие письма одного пользователя требуется (4 * 1000) Кбайт * 3 = 11 Мбайт, то на одном таком сервере поместятся горячие письма: 
 ```
@@ -291,7 +291,7 @@ Letters Postgres
 
 |Процессор|RAM  |Storage     |
 |---------|-----|------------|
-|8 cores  |32 GB|8 TB HDD x20|
+|16 cores |32 GB|8 TB HDD x20|
 
 Таких серверов потребуется:
 ```
@@ -306,7 +306,7 @@ Attach Postgres
 
 |Процессор|RAM  |Storage |
 |---------|-----|--------|
-|8 cores  |32 GB|4 TB SSD|
+|16 cores |32 GB|4 TB SSD|
 
 Количество: 2 + 4 реплики.
 
@@ -346,9 +346,9 @@ Attach Postgres
 |---------------------|----------|-----|--------------|---------------|
 |Sessions Redis       |4 cores   |8 GB |128 GB SSD    |1 + 2 реплики  |
 |Users Redis          |4 cores   |16 GB|128 GB SSD    |1 + 2 реплики  |
-|Letters Postgres Cold|8 cores   |32 GB|8 TB HDD x20  |25 + 50 реплик |
-|Letters Postgres Hot |8 cores   |32 GB|2 TB SSD x20  |2 + 4 реплики  |
-|Attach Postgres      |8 cores   |32 GB|2 TB SSD x4   |2 + 4 реплики  |
+|Letters Postgres Cold|16 cores  |32 GB|8 TB HDD x20  |25 + 50 реплик |
+|Letters Postgres Hot |16 cores  |32 GB|2 TB SSD x20  |2 + 4 реплики  |
+|Attach Postgres      |16 cores  |32 GB|2 TB SSD x4   |2 + 4 реплики  |
 |Attach MinIO         |24 cores  |32 GB|2 TB HDD x8x24|53 + 106 реплик|
 
 |Сервис     |CPU cores|RAM  |Storage   |Кол-во        |
