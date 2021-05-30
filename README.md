@@ -317,11 +317,17 @@ Attach Postgres
 |----------|-----|--------------|
 |24 cores  |32 GB|2 TB HDD x8x24|
 
-Количество: 53 + 53 реплики
+Количество: 53 + 106 реплик
 
 #### NGINX
 
-По эмпирическим данным, rps для запросов на фронтенд будем считать равным 28000. Тогда для обеспечения 
+Для балансироки нагрузки и отдачи статики будем использовать NGINX. Для наших целей будет достаточно 2-х машин с 32 ядерным процессором.
+
+|Процессор|RAM  |Storage   |
+|---------|-----|----------|
+|32 cores |64 GB|512 GB SSD|
+
+Количество: 2 + 4 запасных.
 
 #### DNS
 
@@ -342,11 +348,11 @@ Attach Postgres
 |Letters Postgres Cold|8 cores   |32 GB|8 TB HDD x20  |25 + 50 реплик |
 |Letters Postgres Hot |8 cores   |32 GB|2 TB SSD x20  |2 + 4 реплики  |
 |Attach Postgres      |8 cores   |32 GB|2 TB SSD x4   |1 + 2 реплики  |
-|Attach MinIO         |24 cores  |32 GB|2 TB HDD x8x24|53 + 53 реплики|
+|Attach MinIO         |24 cores  |32 GB|2 TB HDD x8x24|53 + 106 реплик|
 
 |Сервис     |CPU cores|RAM  |Storage   |Кол-во        |
 |-----------|---------|-----|----------|--------------|
-|NGINX      |32 cores ||||
+|NGINX      |32 cores |64 GB|512 GB SSD|2 + 4 запасных|
 |DNS        |8 cores  |8 GB |64 GB SSD |1 + 1 запасной|
 |Auth       |4 cores  |32 GB|128 GB SSD|2 + 4 запасных|
 |Users      |4 cores  |32 GB|128 GB SSD|2 + 4 запасных|
